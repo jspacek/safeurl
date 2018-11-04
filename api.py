@@ -13,14 +13,7 @@ class URLInfo(Resource):
         domain = util.parse_domain(url)
         hash_raw_domain = util.hash_filter(domain)
         domain_resulset = URL.query.filter(URL.hash_domain == hash_raw_domain).all()
-        #print(domain_resulset)
-        if (len(domain_resulset) > 0):
-            # Search within the local domain resulset for the hashed URL
-            hash_raw_url = util.hash_filter(url)
-            #print(hash_raw_url)
-            for domain in domain_resulset:
-                if(domain.hash_url == hash_raw_url):
-                    return {'exists': "true"}
-            return {'exists': "false"}
-        else:
-            return {'exists': "false"}
+        hash_raw_url = util.hash_filter(url)
+        # Second, search for the hashed domain in the resultset
+        exists = util.in_domain(domain_resulset, hash_raw_url)
+        return {'exists': exists}
