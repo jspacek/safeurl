@@ -57,15 +57,16 @@ SQLALchemy provides extensions, such as a BloomFilter, that may be useful for fu
 
 ## TODO
 
-1. ~~Determine the Python frameworks to use and select a DB, integration test
-1. ~~Hash solution for quicker selects for improvement over simple LIKE query
-1. Unit test coverage
+1. ~~Determine the Python frameworks to use and select a DB, integration test~~
+1. ~~Hash solution for quicker selects for improvement over simple LIKE query~~
+1. ~~Unit test coverage~~
 2. Index the database on the domain column
 2. Performance test coverage with large datasets
-2. API
+2. API Key? Additional requests parameters?
 2. Sharding improvements, eg. geographically and/or by popularity of domain
 3. Create a deployable version and host it (note geo-sharding is not in AWS free tier)
 
 ## Issues
 
 1. Old DB instance was corrupted - workaround is to create a new one. I will take a deeper look at this during performance testing.
+2. Double check the GET API call format as per the specs -- this may not fit into the restful API design (oops!).
