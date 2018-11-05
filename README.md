@@ -60,11 +60,11 @@ SQLALchemy provides extensions, such as a BloomFilter, that may be useful for fu
 1. ~~Determine the Python frameworks to use and select a DB, integration test~~
 1. ~~Hash solution for quicker selects for improvement over simple LIKE query~~
 1. ~~Unit test coverage~~
-2. Index the database on the domain column
-2. Performance test coverage with large datasets
-2. API Key? Additional requests parameters?
-2. Sharding improvements, eg. geographically and/or by popularity of domain
-3. Create a deployable version and host it (note geo-sharding is not in AWS free tier)
+1. ~~Index the database on the domain column~~
+1. Performance test coverage with large datasets
+1. API Key? Additional requests parameters?
+1. Sharding improvements, eg. geographically and/or by popularity of domain
+1. Create a deployable version and host it (note geo-sharding is not in AWS free tier)
 
 ## Issues
 
