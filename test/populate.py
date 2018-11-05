@@ -19,10 +19,12 @@ def populate():
     results = URL.query.all()
     pp.pprint(results)
 
-url1 = URL(util.hash_filter('google.com'), util.hash_filter('https://google.com/gmail/'))
-url2 = URL(util.hash_filter('google.com'), util.hash_filter('https://docs.google.com/spreadsheets/u/0/'))
-url3 = URL(util.hash_filter('google.com'), util.hash_filter('https://docs.google.com/document/u/0/'))
-url4 = URL(util.hash_filter('apple.com'), util.hash_filter('https://www.apple.com/mac/'))
-url5 = URL(util.hash_filter('apple.com'), util.hash_filter('https://www.apple.com/ipad/'))
+if __name__ == '__main__':
 
-populate()
+    url1 = URL(util.hash_filter('google.com'), util.hash_filter('https://google.com/gmail/'))
+    url2 = URL(util.hash_filter('google.com'), util.hash_filter('https://docs.google.com/spreadsheets/u/0/'))
+    url3 = URL(util.hash_filter('google.com'), util.hash_filter('https://docs.google.com/document/u/0/'))
+    url4 = URL(util.hash_filter('apple.com'), util.hash_filter('https://www.apple.com/mac/'))
+    url5 = URL(util.hash_filter('apple.com'), util.hash_filter('https://www.apple.com/ipad/'))
+
+    populate()
