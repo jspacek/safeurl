@@ -68,5 +68,5 @@ SQLALchemy provides extensions, such as a BloomFilter, that may be useful for fu
 
 ## Issues
 
-1. Old DB instance was corrupted - workaround is to create a new one. I will take a deeper look at this during performance testing.
+1. RESOLVED: Do not modify or even look at the *.db files. ~~Old DB instance was corrupted - workaround is to create a new one. I will take a deeper look at this during performance testing.~~
 2. Double check the GET API call format as per the specs -- this may not fit into the restful API design (oops!).

@@ -11,8 +11,8 @@ ORM wrapper for a URL row, connects the API and DB
 class URL(Base):
     __tablename__ = 'url'
     id = Column(Integer, primary_key=True)
-    hash_domain = Column(Binary(32), nullable=False)
-    hash_url = Column(Binary(32), nullable=False)
+    hash_domain = Column(Binary(32), nullable=False, index=True)
+    hash_url = Column(Binary(32), nullable=False, unique=True)
 
     def __init__(self, hash_domain=None, hash_url=None):
         self.hash_domain = hash_domain

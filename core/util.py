@@ -13,7 +13,9 @@ def parse_domain(raw_url):
 def hash_filter(raw_url):
     if (raw_url == None):
         return ""
-    return bytes(hashlib.md5(raw_url.encode('utf-8')).hexdigest(), 'utf-8')
+    # Strip off extraneous fields
+    path = urlparse(raw_url).path
+    return bytes(hashlib.md5(path.encode('utf-8')).hexdigest(), 'utf-8')
 
 def in_domain(rs, hash_url):
     if (len(rs) == 0):

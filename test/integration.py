@@ -20,7 +20,8 @@ def cleanup():
     db_session.delete(url3)
     db_session.delete(url4)
     db_session.delete(url5)
-    # Delete entire table URL.query.delete()
+    # Delete entire table
+    URL.query.delete()
 
     db_session.commit()
     results = URL.query.all()
@@ -31,10 +32,10 @@ def test_insert():
     db_session.add(url2)
     db_session.add(url3)
     db_session.commit()
-    results = URL.query.all()
+    results = URL.query.filter(URL.hash_domain == url2.hash_domain).all()
     size = len(results)
-    if (size !=3):
-        print("test_insert Failed. Wanted 3 results, got %d" % size)
+    if (size !=2):
+        print("test_insert Failed. Wanted 2 results, got %d" % size)
         return
     print("test_insert passed")
     pp.pprint(results)
@@ -53,11 +54,11 @@ def test_compare():
 
 if __name__ == '__main__':
 
-    url1 = URL(util.hash_filter('google.com'), util.hash_filter('https://google.com/gmail/'))
-    url2 = URL(util.hash_filter('google.com'), util.hash_filter('https://docs.google.com/spreadsheets/u/0/'))
-    url3 = URL(util.hash_filter('google.com'), util.hash_filter('https://docs.google.com/document/u/0/'))
-    url4 = URL(util.hash_filter('apple.com'), util.hash_filter('https://www.apple.com/mac/'))
-    url5 = URL(util.hash_filter('apple.com'), util.hash_filter('https://www.apple.com/ipad/'))
+    url1 = URL(util.hash_filter('google.com'), util.hash_filter('https://googo.com/gmail'))
+    url2 = URL(util.hash_filter('docs.googo.com'), util.hash_filter('https://docs.googo.com/spreadsheets/u/01/'))
+    url3 = URL(util.hash_filter('docs.googo.com'), util.hash_filter('https://docs.googo.com/document/u/0/1'))
+    url4 = URL(util.hash_filter('apple.com'), util.hash_filter('https://www.appa.com/mac/index.html'))
+    url5 = URL(util.hash_filter('apple.com'), util.hash_filter('https://www.appa.com/ipad/stuff.htm'))
 
     test_insert()
     test_compare()

@@ -9,7 +9,7 @@ import model
 Boilerplate code from SQLAlchemy
 """
 
-engine = create_engine('sqlite:///safeurl1.db', convert_unicode=True, echo=False)
+engine = create_engine('sqlite:///safeurl.db', convert_unicode=True, echo=False)
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))
