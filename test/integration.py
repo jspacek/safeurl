@@ -20,8 +20,6 @@ def cleanup():
     db_session.delete(url3)
     db_session.delete(url4)
     db_session.delete(url5)
-    # Delete entire table
-    URL.query.delete()
 
     db_session.commit()
     results = URL.query.all()
