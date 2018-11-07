@@ -11,7 +11,7 @@ Boilerplate code from Flask-RESTful
 
 app = Flask(__name__)
 api = Api(app)
-api.add_resource(URLInfo,'/urlinfo/<path:url>')
+api.add_resource(URLInfo,'/urlinfo/1/<path:url>')
 
 init_db()
 
