@@ -10,7 +10,7 @@ Flask-RESTful removes tedious boilerplate code for specifying request and respon
 Flask-SQLAlchemy provides tidy ORM that ties in well with Flask API calls.
 
 There are multiple slave DB instances (views) in AWS accessible via secret password.
-These are load balanced using 2-choice randomized algorithm located in core/util.py.
+These are load balanced using 2-choice randomized algorithm (Power-of-d-choices (Pod)) located in core/util.py (see reference 1).
 The DB urls are hashed and indexed by hashed domain to speed up comparisons in the DB select statement.
 
 ## Request Format
@@ -68,10 +68,15 @@ Set as False for the local dev database.
 1. ~~Unit test coverage~~
 2. ~~Index the database on the domain column~~
 2. ~~Load balancing~~
-2. Performance test coverage with large datasets (must follow load balancing)
+2. ~~Unit test additions~~
+2. Performance test coverage with large datasets
 2. Deployable service, possibly with API Keys
 2. Sharding improvements, eg. geographically and/or by popularity of domain
 
 ## Issues
 
 1. safeurl.chpmbkuhjhuc.us-east-1.rds.amazonaws.com/safeurl database is sometimes returning false when it shouldn't because the data is missing.
+
+## References
+
+1. Richa, A. W., Mitzenmacher, M., & Sitaraman, R. (2001). The power of two random choices: A survey of techniques and results. Combinatorial Optimization, 9, 255-304.
