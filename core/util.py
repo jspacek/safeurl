@@ -7,36 +7,56 @@ from random import randint
 Utility methods for hashing, searching, and parsing URLs
 """
 def hash_domain(raw_url):
-    if (raw_url == None):
+    if (raw_url == None or raw_url == ""):
         return ""
     domain = parse_domain(raw_url)
     return bytes(hashlib.md5(domain.encode('utf-8')).hexdigest(), 'utf-8')
 
 def hash_url(raw_url):
-    if (raw_url == None):
+    if (raw_url == None or raw_url == ""):
         return ""
-    path = parse_url(raw_url)
-    return bytes(hashlib.md5(path.encode('utf-8')).hexdigest(), 'utf-8')
+    url = parse_url(raw_url)
+    #print("Flipper URL %s" %url)
+    return bytes(hashlib.md5(url.encode('utf-8')).hexdigest(), 'utf-8')
 
 def parse_domain(raw_url):
-    if (raw_url == None):
+    if (raw_url == None or raw_url == ""):
         return ""
     return urlparse(raw_url).hostname
-
+"""
+Reorganize fields in reverse order to speed up matching
+Add the scheme, domain, params, query, and port to reduce collisions
+Strip off extraneous fields & remove any last trailing "/"
+"""
 def parse_url(raw_url):
-    if (raw_url == None):
+    if (raw_url == None or raw_url == ""):
         return ""
-    # Strip off extraneous fields & remove any last trailing "/"
-    path = urlparse(raw_url).path
+    parsed_url = urlparse(raw_url)
+    path = parsed_url.path
     if path.endswith('/'):
         path = path[:-1]
-    return path
+    scheme = parsed_url.scheme
+    if (scheme == None):
+        scheme = ""
+    port = parsed_url.port
+    if (port == None):
+        port = ""
+    else:
+        port = str(port)
+    params = parsed_url.params
+    if (params == None):
+        params = ""
+    query = parsed_url.query
+    if (query == None):
+        query = ""
+    flipped_url = scheme + port + parse_domain(raw_url) + path + params + query
+    return flipped_url
 
 def in_domain(rs, hash_url):
     if (len(rs) == 0):
         return False
-    for domain in rs:
-        if(domain.hash_url == hash_url):
+    for url in rs:
+        if(url.hash_url == hash_url):
             return True
     return False
 

@@ -54,11 +54,11 @@ if __name__ == '__main__':
     test_parse_url4 = "http://www.stuffandthings.co.au/somethingelse/anotherthing"
     test_parse_url5 = "http://www.stuffandthings.co.au:8080/somethingelse/anotherthing/yaya.html"
 
-    test_parse_path1 = "/gmail"
-    test_parse_path2 = "/somethingelse"
-    test_parse_path3 = "/somethingelse/anotherthing"
-    test_parse_path4 = "/somethingelse/anotherthing"
-    test_parse_path5 = "/somethingelse/anotherthing/yaya.html"
+    test_parse_path1 = "httpsgoogle.com/gmail"
+    test_parse_path2 = "httpsgo.google.com/somethingelse"
+    test_parse_path3 = "httpstuffandthings.co.au/somethingelse/anotherthing"
+    test_parse_path4 = "httpwww.stuffandthings.co.au/somethingelse/anotherthing"
+    test_parse_path5 = "http8080www.stuffandthings.co.au/somethingelse/anotherthing/yaya.html"
 
     test_list = []
     url1 = URL(util.hash_domain(test_raw_url1), util.hash_url(test_raw_url1))
