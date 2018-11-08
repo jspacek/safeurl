@@ -61,13 +61,13 @@ The latest version of Python3 is recommended.
 
 ### Testing
 
-`python3 test/integration.py`
+`python3 test/integration.py` -- test the connection to the database and model
 
-`python3 test/test.py`
+`python3 test/db.py` -- test the load balancer
 
-`python3 test/unit.py`
+`python3 test/unit.py` -- test the core functions
 
-`python3 test/api.py` -- Requires running `python3 test/populate.py` once.
+`python3 test/api.py` -- test the API calls Note: requires running `python3 test/populate.py` once.
 
 
 ### Production
