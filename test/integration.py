@@ -22,8 +22,8 @@ def cleanup():
     db_session.delete(url5)
 
     db_session.commit()
-    results = URL.query.all()
-    pp.pprint(results)
+    # results = URL.query.all()
+    # pp.pprint(results)
 
 def test_insert():
     db_session.add(url1)
@@ -52,11 +52,11 @@ def test_compare():
 
 if __name__ == '__main__':
 
-    url1 = URL(util.hash_domain('https://googo.com/gmail'), util.hash_url('https://googo.com/gmail'))
-    url2 = URL(util.hash_domain('https://docs.googo.com/spreadsheets/u/01/'), util.hash_url('https://docs.googo.com/spreadsheets/u/01/'))
-    url3 = URL(util.hash_domain('https://docs.googo.com/document/u/0/1'), util.hash_url('https://docs.googo.com/document/u/0/1'))
-    url4 = URL(util.hash_domain('https://www.appa.com/mac/index.html'), util.hash_url('https://www.appa.com/mac/index.html'))
-    url5 = URL(util.hash_domain('https://www.appa.com/ipad/stuff.htm'), util.hash_url('https://www.appa.com/ipad/stuff.htm'))
+    url1 = URL(util.hash_domain('https://googo.com/gmail/1/2/3/4'), util.hash_url('https://googo.com/gmail/1/2/3/4'))
+    url2 = URL(util.hash_domain('https://docs.googollll.com/spreadsheets/u/04/'), util.hash_url('https://docs.googollll.com/spreadsheets/u/04/'))
+    url3 = URL(util.hash_domain('https://docs.googollll.com/document/u/1/1'), util.hash_url('https://docs.googollll.com/document/u/1/1'))
+    url4 = URL(util.hash_domain('https://www.appa3.com/mac/index.html'), util.hash_url('https://www.appa3.com/mac/index.html'))
+    url5 = URL(util.hash_domain('https://www.appa3.com/ipad/stuff.htm'), util.hash_url('https://www.appa3.com/ipad/stuff.htm'))
 
     test_insert()
     test_compare()

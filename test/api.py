@@ -14,7 +14,7 @@ Note: call test/populate.py if the database is fresh
 pp = pprint.PrettyPrinter(indent=4)
 
 def test_get_true():
-    response = get('http://localhost:5000/urlinfo/1/https://google.com/gmail/')
+    response = get('http://localhost:5000/urlinfo/1/https://www.appa.com/mac/index.html')
     assert(response.status_code == 200)
     assert(response.text=='{\n    "exists": true\n}\n')
 
@@ -33,9 +33,13 @@ def test_get_false_domain_true_page():
     assert(response.status_code == 200)
     assert(response.text=='{\n    "exists": false\n}\n')
 
-def test_get_invalid_url():
-    response = get('http://localhost:5000/urlinfo/1/sdhkflshf&hdkjshf=ffdf')
-    assert(response.status_code == 400)
+def test_get_invalid_url404():
+    response = get('http://localhost:5000/url info/1/     /sdhkflshf&hdkjshf=ffdf')
+    assert(response.status_code == 404)
+
+def test_get_invalid_url500():
+    response = get('http://localhost:5000/urlinfo/1/     /sdhkflshf&hdkjshf=ffdf')
+    assert(response.status_code == 500)
 
 print("API Tests Passed")
 
@@ -44,4 +48,5 @@ if __name__ == '__main__':
     test_get_false_url()
     test_get_false_domain()
     test_get_false_domain_true_page()
-    test_get_invalid_url()
+    test_get_invalid_url404()
+    test_get_invalid_url500()

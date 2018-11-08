@@ -23,6 +23,9 @@ If you are running the service locally, serviceip:port is by default 127.0.0.1:5
 
 `curl serviceip:serviceport/urlinfo/1/www.ismyurlblocked.com/tellmeplease`
 
+Example:
+
+`curl 127.0.0.1:5000/urlinfo/1/https://docs.googo.com/document/u/0/1`
 
 ## Response Format
 
@@ -56,6 +59,15 @@ The latest version of Python3 is recommended.
 ### Startup
 `python3 service.py`
 
+### Testing
+
+`python3 test/integration.py`
+
+`python3 test/test.py`
+
+`python3 test/api.py` -- Requires running `python3 test/populate.py` once.
+
+
 ### Production
 Modify the variable `is_prod` in `config.py`, set to True to connect to AWS.
 Set as False for the local dev database.
@@ -69,13 +81,12 @@ Set as False for the local dev database.
 2. ~~Index the database on the domain column~~
 2. ~~Load balancing~~
 2. ~~Unit test additions~~
-2. Performance test coverage with large datasets
+2. Performance test coverage with large datasets~ in progress
 2. Deployable service, possibly with API Keys
 2. Sharding improvements, eg. geographically and/or by popularity of domain
 
 ## Issues
 
-1. safeurl.chpmbkuhjhuc.us-east-1.rds.amazonaws.com/safeurl database is sometimes returning false when it shouldn't because the data is missing.
 
 ## References
 
