@@ -52,11 +52,11 @@ def test_compare():
 
 if __name__ == '__main__':
 
-    url1 = URL(util.hash_filter('google.com'), util.hash_filter('https://googo.com/gmail'))
-    url2 = URL(util.hash_filter('docs.googo.com'), util.hash_filter('https://docs.googo.com/spreadsheets/u/01/'))
-    url3 = URL(util.hash_filter('docs.googo.com'), util.hash_filter('https://docs.googo.com/document/u/0/1'))
-    url4 = URL(util.hash_filter('apple.com'), util.hash_filter('https://www.appa.com/mac/index.html'))
-    url5 = URL(util.hash_filter('apple.com'), util.hash_filter('https://www.appa.com/ipad/stuff.htm'))
+    url1 = URL(util.hash_domain('https://googo.com/gmail'), util.hash_url('https://googo.com/gmail'))
+    url2 = URL(util.hash_domain('https://docs.googo.com/spreadsheets/u/01/'), util.hash_url('https://docs.googo.com/spreadsheets/u/01/'))
+    url3 = URL(util.hash_domain('https://docs.googo.com/document/u/0/1'), util.hash_url('https://docs.googo.com/document/u/0/1'))
+    url4 = URL(util.hash_domain('https://www.appa.com/mac/index.html'), util.hash_url('https://www.appa.com/mac/index.html'))
+    url5 = URL(util.hash_domain('https://www.appa.com/ipad/stuff.htm'), util.hash_url('https://www.appa.com/ipad/stuff.htm'))
 
     test_insert()
     test_compare()
