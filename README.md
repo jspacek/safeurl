@@ -65,6 +65,8 @@ The latest version of Python3 is recommended.
 
 `python3 test/test.py`
 
+`python3 test/unit.py`
+
 `python3 test/api.py` -- Requires running `python3 test/populate.py` once.
 
 
