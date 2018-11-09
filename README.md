@@ -46,18 +46,37 @@ or
 ## Run the Service locally
 ### Dependencies
 The latest version of Python3 is recommended.
-
+(Depending on your installation setup, you may need to install with pip3.)
 `pip install Flask`
 
 `pip install flask-restful`
 
 `pip install Flask-SQLAlchemy`
 
-### Populate DB table
-`python3 test/populate.py`
-
-### Startup
+### Startup the service
 `python3 service.py`
+
+### Curl the service
+
+`curl 127.0.0.1:5000/urlinfo/1/https://docs.googo.com/document/u/0/1`
+
+`curl 127.0.0.1:5000/urlinfo/1/http://www.capreve.jp/2236W/biz/Smallbusiness/`
+
+Both of these curl commands should work out of the box. If they return false, you may need to populate the DB table.
+
+### Populate DB table
+
+To wip the DB, delete the safeurl.db file. If you receive unique constraint errors when running these files, it means that the DB is already populated.
+
+`python3 test/populate.py` for a very small test set of uninteresting data
+
+eg. `curl 127.0.0.1:5000/urlinfo/1/https://docs.googo.com/document/u/0/1`
+
+`python3 test/populate_urlhaus.py test/urlhaus_malware_small` for a more interesting set of data
+
+eg. `curl 127.0.0.1:5000/urlinfo/1/http://www.demicolon.com/dvrguru_revoerror/image/3930OUOELXK/com/Business/`
+
+WARNING: The sites in the urlhaus files are real malware sites. More information at https://urlhaus.abuse.ch/
 
 ### Testing
 
