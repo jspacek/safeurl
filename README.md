@@ -60,7 +60,7 @@ The latest version of Python3 is recommended.
 
 `curl 127.0.0.1:5000/urlinfo/1/https://docs.googo.com/document/u/0/1`
 
-`curl 127.0.0.1:5000/urlinfo/1/http://www.capreve.jp/2236W/biz/Smallbusiness/'
+`curl 127.0.0.1:5000/urlinfo/1/http://www.capreve.jp/2236W/biz/Smallbusiness/`
 
 Both of these curl commands should work out of the box. If they return false, you may need to populate the DB table.
 
