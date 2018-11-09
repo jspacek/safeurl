@@ -66,7 +66,7 @@ Both of these curl commands should work out of the box. If they return false, yo
 
 ### Populate DB table
 
-To wip the DB, delete the safeurl.db file. If you receive unique constraint errors when running these files, it means that the DB is already populated.
+To wipe the DB, delete the safeurl.db file. If you receive unique constraint errors when running these files, it means that the DB is already populated.
 
 `python3 test/populate.py` for a very small test set of uninteresting data
 
