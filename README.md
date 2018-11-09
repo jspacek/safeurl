@@ -16,7 +16,7 @@ The DB urls are hashed and indexed by hashed domain to speed up comparisons in t
 ## Request Format
 GET requests include a URL that can be sent along as plain text; the service performs the URL encoding internally.
 
-If you are running the service locally, serviceip:port is by default 127.0.0.1:5000
+If you are running the service locally, serviceip:port is by default 0.0.0.0:5000
 
 
 ### GET urlinfo
@@ -25,7 +25,7 @@ If you are running the service locally, serviceip:port is by default 127.0.0.1:5
 
 Example:
 
-`curl 127.0.0.1:5000/urlinfo/1/https://docs.googo.com/document/u/0/1`
+`curl 0.0.0.0/urlinfo/1/https://docs.googo.com/document/u/0/1`
 
 ## Response Format
 
@@ -71,9 +71,9 @@ Tests can be run from inside the /test folder.
 
 ### Test it by curling the service
 
-`curl 127.0.0.1:5000/urlinfo/1/https://docs.googo.com/document/u/0/1`
+`curl 0.0.0.0:5000/urlinfo/1/https://docs.googo.com/document/u/0/1`
 
-`curl 127.0.0.1:5000/urlinfo/1/http://www.capreve.jp/2236W/biz/Smallbusiness/`
+`curl 0.0.0.0:5000/urlinfo/1/http://www.capreve.jp/2236W/biz/Smallbusiness/'
 
 Both of these curl commands should work out of the box. If they return false, you may need to populate the DB table.
 
@@ -83,11 +83,11 @@ To wipe the DB, delete the safeurl.db file. If you receive unique constraint err
 
 `python3 test/populate.py` for a very small test set of uninteresting data
 
-eg. `curl 127.0.0.1:5000/urlinfo/1/https://docs.googo.com/document/u/0/1`
+eg. `curl 0.0.0.0:5000/urlinfo/1/https://docs.googo.com/document/u/0/1`
 
 `python3 test/populate_urlhaus.py test/urlhaus_malware_small` for a more interesting set of data
 
-eg. `curl 127.0.0.1:5000/urlinfo/1/http://www.demicolon.com/dvrguru_revoerror/image/3930OUOELXK/com/Business/`
+eg. `curl 0.0.0.0:5000/urlinfo/1/http://www.demicolon.com/dvrguru_revoerror/image/3930OUOELXK/com/Business/`
 
 WARNING: The sites in the urlhaus files are real malware sites. More information at https://urlhaus.abuse.ch/
 
