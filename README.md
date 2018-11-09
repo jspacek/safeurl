@@ -45,11 +45,16 @@ or
 
 ## Run the Service locally
 ### Through Docker
-#### Docker Build
+
+#### Docker Compose
+
+`docker-compose build`
+
+`docker-compose up`
+
+#### Docker SSH
 
 `docker build -t safe-url:latest .`
-
-#### Docker Run to ssh into container
 
 `docker run -d -p 5000:5000 safe-url`
 
