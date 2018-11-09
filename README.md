@@ -44,19 +44,32 @@ or
 
 
 ## Run the Service locally
-### Dependencies
-The latest version of Python3 is recommended.
-(Depending on your installation setup, you may need to install with pip3.)
-`pip install Flask`
+### Through Docker
+#### Docker Build
 
-`pip install flask-restful`
+`docker build -t safe-url:latest .`
 
-`pip install Flask-SQLAlchemy`
+#### Docker Run to ssh into container
 
-### Startup the service
-`python3 service.py`
+`docker run -d -p 5000:5000 safe-url`
 
-### Curl the service
+`docker ps -a`
+
+`docker exec -it {container_name} bash`
+
+Tests can be run from inside the /test folder.
+
+### Testing
+
+`python3 test/integration.py` -- test the connection to the database and model
+
+`python3 test/db.py` -- test the load balancer
+
+`python3 test/unit.py` -- test the core functions
+
+`python3 test/api.py` -- test the API calls Note: may require running `python3 test/populate.py` once.
+
+### Test it by curling the service
 
 `curl 127.0.0.1:5000/urlinfo/1/https://docs.googo.com/document/u/0/1`
 
@@ -66,7 +79,7 @@ Both of these curl commands should work out of the box. If they return false, yo
 
 ### Populate DB table
 
-To wip the DB, delete the safeurl.db file. If you receive unique constraint errors when running these files, it means that the DB is already populated.
+To wipe the DB, delete the safeurl.db file. If you receive unique constraint errors when running these files, it means that the DB is already populated.
 
 `python3 test/populate.py` for a very small test set of uninteresting data
 
@@ -78,15 +91,23 @@ eg. `curl 127.0.0.1:5000/urlinfo/1/http://www.demicolon.com/dvrguru_revoerror/im
 
 WARNING: The sites in the urlhaus files are real malware sites. More information at https://urlhaus.abuse.ch/
 
-### Testing
+### Start the service without Docker
 
-`python3 test/integration.py` -- test the connection to the database and model
+#### Dependencies
+The latest version of Python3 is recommended.
+(Depending on your installation setup, you may need to install with pip3.)
+`pip install Flask`
 
-`python3 test/db.py` -- test the load balancer
+`pip install flask-restful`
 
-`python3 test/unit.py` -- test the core functions
+`pip install Flask-SQLAlchemy`
 
-`python3 test/api.py` -- test the API calls Note: requires running `python3 test/populate.py` once.
+`pip install requests`
+
+`pip install pytest`
+
+#### Startup the service
+`python3 service.py`
 
 
 ### Production
@@ -104,6 +125,7 @@ Set as False for the local dev database.
 2. ~~Unit test additions~~
 2. Performance test coverage with large datasets~ in progress
 2. Deployable service, possibly with API Keys
+2. Dockerize with exposed port through yml config
 2. Sharding improvements, eg. geographically and/or by popularity of domain
 
 ## Issues
