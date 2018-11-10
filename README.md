@@ -25,7 +25,7 @@ If you are running the service locally, serviceip:port is by default 0.0.0.0:500
 
 Example:
 
-`curl 0.0.0.0/urlinfo/1/https://docs.googo.com/document/u/0/1`
+`curl 0.0.0.0:5000/urlinfo/1/https://docs.googo.com/document/u/0/1`
 
 ## Response Format
 
